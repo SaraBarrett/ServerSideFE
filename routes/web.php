@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\UtilController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('utils.home');
-})->name('utils.welcome');
+Route::get('/', [UtilController::class, 'home'])->name('utils.welcome');
 
 Route::get('/hello', function () {
     $myName= 'Sara';

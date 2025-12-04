@@ -1,13 +1,17 @@
 @extends('layouts.main_layout')
 @section('content')
-    @php
-        //qq código de php que eu quiser; funções, variáveis, etc
-        $surname = 'Monteiro';
-    @endphp
+    <h3>Home Page da {{ $surname ? $surname : 'escola' }}</h3>
+
+    @if ($surname)
+        <h5>Olá {{ $surname }}</h5>
+        <img  height="20px"  src="{{ asset('images/logo.png') }}" alt="">
+        <br>
+    @else
+    <h6>Olá Utilizador</h6>
+    <img src="{{asset('images/nophoto.jpg')}}" alt="">
+    @endif
 
 
-
-    <h3>Home Page da {{ $surname }}</h3>
     <img src="{{ asset('images/Screenshot 2025-10-09 143141.png') }}" alt="">
     <ul>
         <li><a href="{{ route('utils.hello') }}">Olá mundo!</a></li>
