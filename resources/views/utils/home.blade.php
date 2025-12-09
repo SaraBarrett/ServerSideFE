@@ -16,5 +16,6 @@
     <ul>
         <li><a href="{{ route('utils.hello') }}">Olá mundo!</a></li>
         <li><a href="{{ route('users.add') }}">Adicionar Users</a></li>
+        <li><a href="{{route('users.all')}}">Todos os Users</a></li>
     </ul>
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +23,9 @@ Route::get('/turma/{name}', function ($name) {
 });
 
 
-Route::get('/adicionarusers', function(){
-    return view('users.add_user');
-})->name('users.add');
+Route::get('/adicionarusers', [UserController::class, 'addUser'])->name('users.add');
 
+Route::get('/allusers', [UserController::class, 'allUsers'])->name('users.all');
 
 Route::fallback(function(){
     return view('utils.fallbackV');
