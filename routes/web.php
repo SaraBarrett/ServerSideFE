@@ -25,6 +25,12 @@ Route::get('/turma/{name}', function ($name) {
 
 Route::get('/adicionarusers', [UserController::class, 'addUser'])->name('users.add');
 
+
+//função raw que insere um user na Base de dados (teste do dbquery builder sem frontend)
+Route::get('/insertintodb', [UserController::class, 'insertUserIntoDB']);
+
+Route::get('/updateintodb', [UserController::class, 'updateUserIntoDB']);
+
 Route::get('/allusers', [UserController::class, 'allUsers'])->name('users.all');
 
 Route::fallback(function(){
