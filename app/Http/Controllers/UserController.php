@@ -28,25 +28,29 @@ class UserController extends Controller
         ];
 
         //dd($cesaeInfo['name']);
+        $users = DB::table('users')->get();
 
 
-
-        return view('users.all_users',compact('cesaeInfo', 'students'));
+        return view('users.all_users',compact('cesaeInfo', 'students', 'users'));
     }
 
     public function insertUserIntoDB(){
-
-
         //validar se dados estão em conformidade com a estrutura da base de dados
 
 
         //se passar em todas as validações, insere então na base de dados
         DB::table('users')
-        ->insert([
+        ->updateOrInsert(
+            [
+            'email' => 'Rafaela8888@gmail.com'
+            ],
+            [
             'name'=>'Rafaela',
-            'email' => 'Rafaela2@gmail.com',
-            'password' =>'RAfaela1234'
+            'password' =>'RAfaela1234',
+            'updated_at' =>now(),
+            'nif' => '2444444444'
         ]);
+
         return response()->json('user inserido com sucesso');
     }
     public function updateUserIntoDB(){
@@ -54,7 +58,7 @@ class UserController extends Controller
 
         //validar se dados estão em conformidade com a estrutura da base de dados
 
-        //se passar em todas as validações, insere então na base de dados
+        //se passar em todas as validações, actualiza então na base de dados
         DB::table('users')
         ->where('id', 3)
         ->update([
@@ -64,6 +68,25 @@ class UserController extends Controller
 
         return response()->json('user atualizado com sucesso');
     }
+    public function deleteUserFromDB(){
+
+        //query para apagar
+        DB::table('users')
+        ->where('id', 5)
+        ->delete();
+
+        return response()->json('user apagado com sucesso');
+    }
+
+    public function selectUsersFromDB(){
+        $users = DB::table('users')
+        ->whereNull('updated_at')
+        ->get();
+
+
+        dd($users);
+    }
+
 
 
 }

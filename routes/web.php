@@ -31,6 +31,9 @@ Route::get('/insertintodb', [UserController::class, 'insertUserIntoDB']);
 
 Route::get('/updateintodb', [UserController::class, 'updateUserIntoDB']);
 
+Route::get('/deleteuser', [UserController::class, 'deleteUserFromDB']);
+Route::get('/getusers', [UserController::class, 'selectUsersFromDB']);
+
 Route::get('/allusers', [UserController::class, 'allUsers'])->name('users.all');
 
 Route::fallback(function(){
