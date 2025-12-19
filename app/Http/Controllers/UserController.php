@@ -88,6 +88,33 @@ class UserController extends Controller
         dd($users);
     }
 
+    //função que vai carregar a ficha do user
+    public function viewUser($id){
+        //query que vai buscar o user que estou a clicar
+        $user = DB::table('users')
+                ->where('id', $id)
+                ->first();
 
+
+        // $user = User::where('id', $id)
+        //         ->first();
+
+        return view('users.view_user', compact('user'));
+
+    }
+
+    public function deleteUser($id){
+
+        Db::table('tasks')
+        ->where('user_id', $id)
+        ->delete();
+
+        Db::table('users')
+        ->where('id', $id)
+        ->delete();
+
+        return back();
+    }
 
 }
+

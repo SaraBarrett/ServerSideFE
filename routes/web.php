@@ -24,19 +24,21 @@ Route::get('/turma/{name}', function ($name) {
 });
 
 
+//rotas de users
 Route::get('/adicionarusers', [UserController::class, 'addUser'])->name('users.add');
-
 
 //função raw que insere um user na Base de dados (teste do dbquery builder sem frontend)
 Route::get('/insertintodb', [UserController::class, 'insertUserIntoDB']);
-
 Route::get('/updateintodb', [UserController::class, 'updateUserIntoDB']);
-
 Route::get('/deleteuser', [UserController::class, 'deleteUserFromDB']);
 Route::get('/getusers', [UserController::class, 'selectUsersFromDB']);
-
 Route::get('/allusers', [UserController::class, 'allUsers'])->name('users.all');
 
+//rota que abre a view com toda a info do user
+Route::get('/viewuser/{id}', [UserController::class, 'viewUser'])->name('users.view');
+
+//rota que apaga o user
+Route::get('/deleteuser/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
 //rotas de tasks
 Route::get('/alltasks', [TaskController::class, 'allTasks'])->name('tasks.all');
