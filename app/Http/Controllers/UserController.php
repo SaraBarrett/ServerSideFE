@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,7 @@ class UserController extends Controller
         ];
 
         //dd($cesaeInfo['name']);
-        $users = DB::table('users')->get();
+        $users = User::get();
 
 
         return view('users.all_users',compact('cesaeInfo', 'students', 'users'));

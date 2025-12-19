@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,10 @@ Route::get('/deleteuser', [UserController::class, 'deleteUserFromDB']);
 Route::get('/getusers', [UserController::class, 'selectUsersFromDB']);
 
 Route::get('/allusers', [UserController::class, 'allUsers'])->name('users.all');
+
+
+//rotas de tasks
+Route::get('/alltasks', [TaskController::class, 'allTasks'])->name('tasks.all');
 
 Route::fallback(function(){
     return view('utils.fallbackV');

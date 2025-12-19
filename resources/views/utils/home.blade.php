@@ -4,11 +4,11 @@
 
     @if ($surname)
         <h5>Olá {{ $surname }}</h5>
-        <img  height="20px"  src="{{ asset('images/logo.png') }}" alt="">
+        <img height="20px" src="{{ asset('images/logo.png') }}" alt="">
         <br>
     @else
-    <h6>Olá Utilizador</h6>
-    <img src="{{asset('images/nophoto.jpg')}}" alt="">
+        <h6>Olá Utilizador</h6>
+        <img src="{{ asset('images/nophoto.jpg') }}" alt="">
     @endif
 
 
@@ -16,6 +16,7 @@
     <ul>
         <li><a href="{{ route('utils.hello') }}">Olá mundo!</a></li>
         <li><a href="{{ route('users.add') }}">Adicionar Users</a></li>
-        <li><a href="{{route('users.all')}}">Todos os Users</a></li>
+        <li><a href="{{ route('users.all') }}">Todos os Users</a></li>
+        <li><a href="{{route('tasks.all')}}">Todas tarefas</a></li>
     </ul>
 @endsection
