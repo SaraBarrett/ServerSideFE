@@ -25,7 +25,11 @@ Route::get('/turma/{name}', function ($name) {
 
 
 //rotas de users
+//rota para visualizar o formulário de inserir user
 Route::get('/adicionarusers', [UserController::class, 'addUser'])->name('users.add');
+
+//rota que pega nos dados do formulário e os envia para o servidor
+Route::post('/store-user', [UserController::class, 'storeUser'])->name('users.store');
 
 //função raw que insere um user na Base de dados (teste do dbquery builder sem frontend)
 Route::get('/insertintodb', [UserController::class, 'insertUserIntoDB']);

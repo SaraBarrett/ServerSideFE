@@ -14,6 +14,12 @@ class UserController extends Controller
         return view('users.add_user', compact('pageAdmin'));
     }
 
+    //função que recebe os dados do formulário, valida e insere na base de dados
+    public function storeUser(Request $request){
+        dd('formulário submetido');
+
+    }
+
     public function allUsers(){
         $cesaeInfo =
         ['name' =>'cesae',
