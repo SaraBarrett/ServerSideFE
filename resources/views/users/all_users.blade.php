@@ -1,5 +1,12 @@
 @extends('layouts.main_layout')
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
+
     <p>O email de contacto, caso detecte erros é {{ $cesaeInfo['email'] }}, na {{ $cesaeInfo['address'] }} </p>
     <h5>Lista de todos os users de forma estática (definido num array sem Base de dados)</h5>
     <ul>
@@ -27,8 +34,8 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->nif }}</td>
-                    <td><a href="{{route('users.view', $user->id)}}" class="btn btn-info">Ver</a></td>
-                    <td><a class="btn btn-danger" href="{{route('users.delete', $user->id)}}">Apagar</a></td>
+                    <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver</a></td>
+                    <td><a class="btn btn-danger" href="{{ route('users.delete', $user->id) }}">Apagar</a></td>
                 </tr>
             @endforeach
 

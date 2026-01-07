@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,7 +17,21 @@ class UserController extends Controller
 
     //função que recebe os dados do formulário, valida e insere na base de dados
     public function storeUser(Request $request){
-        dd('formulário submetido');
+        //dd($request->all());
+
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'email' => 'required|email|unique:users',
+            'password' =>'required|min:8|string'
+        ]);
+
+        User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->pasword)
+        ]);
+
+        return redirect()->route('users.all')->with('message', 'User inserido com sucesso');
 
     }
 
