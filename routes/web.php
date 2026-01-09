@@ -57,6 +57,8 @@ Route::get('/addtasks',[TaskController::class, 'addTasks'] )->name("tasks.add");
 //Pega nos dados do formulário e enviar dados para o servidor
 Route::post('/storetask',[TaskController::class, 'storeTask'] )->name("tasks.store");//storetask é o nome dado para chamar a rota que vai chamar o controlador TaskController e a função storeTask (método post porque está a enviar dados para o servidor)
 
+Route::put('/updateUser', [UserController::class, 'updateUser'])->name('users.update');
+
 Route::fallback(function(){
     return view('utils.fallbackV');
 });
