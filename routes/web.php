@@ -49,7 +49,7 @@ Route::get('/viewuser/{id}', [UserController::class, 'viewUser'])->name('users.v
 Route::get('/deleteuser/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
 //rotas de tasks
-Route::get('/alltasks', [TaskController::class, 'allTasks'])->name('tasks.all');
+Route::get('/alltasks', [TaskController::class, 'allTasks'])->name('tasks.all')->middleware('auth');
 
 //Pega nos dados do formulário e enviar dados para o servidor
 Route::post('/storetask',[TaskController::class, 'storeTask'] )->name("tasks.store");//storetask é o nome dado para chamar a rota que vai chamar o controlador TaskController e a função storeTask (método post porque está a enviar dados para o servidor)

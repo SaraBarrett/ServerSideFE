@@ -34,8 +34,12 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->nif }}</td>
-                    <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver</a></td>
-                    <td><a class="btn btn-danger" href="{{ route('users.delete', $user->id) }}">Apagar</a></td>
+                    @auth
+                        <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver</a></td>
+                        @if (Auth::user()->email == 'admin@gmail.com')
+                            <td><a class="btn btn-danger" href="{{ route('users.delete', $user->id) }}">Apagar</a></td>
+                        @endif
+                    @endauth
                 </tr>
             @endforeach
 

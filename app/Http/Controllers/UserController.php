@@ -28,7 +28,7 @@ class UserController extends Controller
         User::insert([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->pasword)
+            'password' => Hash::make($request->password)
         ]);
 
         return redirect()->route('users.all')->with('message', 'User inserido com sucesso');
